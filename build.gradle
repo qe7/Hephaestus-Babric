@@ -1,0 +1,70 @@
+plugins {
+    id 'babric-loom' version '1.5-SNAPSHOT'
+    id 'maven-publish'
+    id 'com.gorylenko.gradle-git-properties' version '2.4.1'
+}
+
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+
+archivesBaseName = project.archives_base_name
+version = project.mod_version
+group = project.maven_group
+
+loom {
+    gluedMinecraftJar()
+    customMinecraftManifest.set("https://babric.github.io/manifest-polyfill/${minecraft_version}.json")
+    intermediaryUrl.set("https://maven.glass-launcher.net/babric/babric/intermediary/%1\$s/intermediary-%1\$s-v2.jar")
+}
+
+repositories {
+    maven { url = 'https://maven.glass-launcher.net/babric' }
+    maven { url = 'https://jitpack.io' }
+    maven { url = 'https://github.com/FreeCliff/maven/raw/master' }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings("org.wksh:mcp:${project.mcp_mappings}")
+    modImplementation "babric:fabric-loader:${project.loader_version}"
+
+    implementation "org.slf4j:slf4j-api:1.8.0-beta4"
+    implementation "org.apache.logging.log4j:log4j-slf4j18-impl:2.16.0"
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.11.0'
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+java {
+    withSourcesJar()
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archivesBaseName}" }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+
+    }
+}

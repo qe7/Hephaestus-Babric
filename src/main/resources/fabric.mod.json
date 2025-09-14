@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "hephaestus",
+  "version": "${version}",
+
+  "name": "Hephaestus",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "qe7"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/heph/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.qe7.HephaestusMod"
+    ]
+  },
+  "mixins": [
+    "heph.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "minecraft": "1.0.0-beta.7.3"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
