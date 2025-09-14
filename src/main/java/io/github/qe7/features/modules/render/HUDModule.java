@@ -13,7 +13,6 @@ import net.minecraft.src.ScaledResolution;
 public final class HUDModule extends AbstractModule {
 
     private final BooleanSetting displayWatermark = new BooleanSetting("Display Watermark", true);
-    private final BooleanSetting displayBuildInfo = new BooleanSetting("Display Build Info", true);
 
     public HUDModule() {
         super("HUD", "Displays information related to the client", ModuleCategory.RENDER);
@@ -29,17 +28,7 @@ public final class HUDModule extends AbstractModule {
         final ScaledResolution scaledResolution = event.getScaledResolution();
 
         if (this.displayWatermark.getValue()) {
-            fontRenderer.drawStringWithShadow(HephaestusMod.INSTANCE.getName(), 2, 2, -1);
-        }
-
-        if (this.displayBuildInfo.getValue()) {
-            final String buildInfo = HephaestusMod.INSTANCE.getVersion();
-            fontRenderer.drawStringWithShadow(
-                    buildInfo,
-                    scaledResolution.getScaledWidth() - fontRenderer.getStringWidth(buildInfo) - 2,
-                    scaledResolution.getScaledHeight() - 9 - 2,
-                    -1
-            );
+            fontRenderer.drawStringWithShadow(HephaestusMod.INSTANCE.getName() + " " + HephaestusMod.INSTANCE.getVersion(), 2, 2, -1);
         }
     };
 }
