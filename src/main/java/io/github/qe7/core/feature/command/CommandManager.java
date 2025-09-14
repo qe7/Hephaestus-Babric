@@ -8,8 +8,10 @@ import io.github.qe7.core.common.Global;
 import io.github.qe7.core.manager.AbstractManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.events.PacketEvent;
+import io.github.qe7.features.commands.HelpCommand;
 import io.github.qe7.toolbox.ChatUtil;
 import net.minecraft.src.Packet3Chat;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,6 +22,8 @@ public final class CommandManager extends AbstractManager<Class<? extends Abstra
 
     public CommandManager() {
         List<AbstractCommand> commandList = new ArrayList<>();
+
+        commandList.add(new HelpCommand());
 
         this.registerAbstractCommand(commandList);
 
@@ -36,14 +40,19 @@ public final class CommandManager extends AbstractManager<Class<? extends Abstra
         }
     }
 
-    public @Nullable AbstractCommand getCommandByNameOrAlis(String input) {
+    @Contract(" -> new")
+    public @NotNull List<AbstractCommand> getCommands() {
+        return new ArrayList<>(map.values());
+    }
+
+    public @Nullable AbstractCommand getCommandByNameOrAlias(String input) {
         for (AbstractCommand command : this.map.values()) {
             if (command.getName().equalsIgnoreCase(input))
                 return command;
         }
 
         for (AbstractCommand command : this.map.values()) {
-            for (String string: command.getAlises()) {
+            for (String string: command.getAliases()) {
                 if (string.equalsIgnoreCase(input))
                     return command;
             }
@@ -74,7 +83,7 @@ public final class CommandManager extends AbstractManager<Class<? extends Abstra
         AbstractCommand targetCommand;
         final String name = args[0].replace(".", "").toLowerCase();
 
-        targetCommand = getCommandByNameOrAlis(name);
+        targetCommand = getCommandByNameOrAlias(name);
 
         if (targetCommand == null) {
             ChatUtil.addPrefixedMessage(this.getClass().getSimpleName(), "No command found.");
