@@ -5,14 +5,10 @@
 
 Hephaestus-Babric is a Minecraft **Beta 1.7.3** mod built on the **Babric** framework using MCP mappings, designed for 2beta2t anarchy.
 
----
-
 ## Requirements
 
 * Minecraft **Beta 1.7.3**
 * **Babric** framework
-
----
 
 ## Installation
 
@@ -20,15 +16,11 @@ Hephaestus-Babric is a Minecraft **Beta 1.7.3** mod built on the **Babric** fram
 2. Build with Gradle using Java 17.
 3. Place the generated mod JAR into your Minecraft Beta 1.7.3 Babric mods folder.
 
----
-
 ## Development
 
 * Uses **Java 17** with Gradle **Java 8** with language level and **Babric Loom**.
 * Modules and commands can be added by extending the provided base classes.
 * Mixin is used to inject functionality into vanilla classes for features like event handling.
-
----
 
 ## Contributing
 
