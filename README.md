@@ -1,6 +1,7 @@
 # Hephaestus-Babric
 
-> **Note:** This project is new and will be bare-bone for a while. Features and systems are still under active development.
+> [!NOTE]
+> This project is new and will be bare-bone for a while. Features and systems are still under active development.
 
 Hephaestus-Babric is a Minecraft **Beta 1.7.3** mod built on the **Babric** framework using MCP mappings, designed for 2beta2t anarchy.
 
