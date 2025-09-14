@@ -1,4 +1,4 @@
-name: Build and Release JAR (Java 8 - Corretto)
+name: Build and Release JAR (Java 17 - Corretto)
 
 on:
   push:
@@ -6,12 +6,31 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: windows-latest
+  build-release:
+    if: startsWith(github.event.head_commit.message, 'alpha:') ||
+        startsWith(github.event.head_commit.message, 'beta:')  ||
+        startsWith(github.event.head_commit.message, 'release:')
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # needed to push tags and create releases
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Extract version, channel, and commit hash
+        id: meta
+        run: |
+          msg="${{ github.event.head_commit.message }}"
+          channel="${msg%%:*}"                 # alpha / beta / release
+          version="$(echo ${msg##*:} | xargs)" # strip leading space
+          commit="$(git rev-parse --short HEAD)"
+          echo "CHANNEL=$channel" >> $GITHUB_ENV
+          echo "VERSION=$version" >> $GITHUB_ENV
+          echo "COMMIT=$commit" >> $GITHUB_ENV
+          echo "FULL_TAG=${CHANNEL^}-${VERSION}" >> $GITHUB_ENV # Alpha-2.0.0
+          echo "VERSION_TAG=$VERSION" >> $GITHUB_ENV           # 2.0.0
 
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
@@ -23,41 +42,34 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 
-      - name: Build JAR
-        run: ./gradlew build --no-daemon
+      - name: Build JAR with version and commit hash
+        run: ./gradlew clean build --no-daemon -Pversion=${{ env.VERSION }}
 
-      - name: Upload JAR as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Hephaestus-JAR
-          path: build/libs/Hephaestus-2.0.0.jar
+      - name: Rename built JAR to include commit hash
+        run: |
+          mkdir -p artifacts
+          # assuming your JAR name starts with Hephaestus-${VERSION}
+          srcJar=$(ls build/libs/Hephaestus-${{ env.VERSION }}*.jar | head -n 1)
+          destJar="artifacts/Hephaestus-${{ env.VERSION }}-${{ env.COMMIT }}.jar"
+          mv "$srcJar" "$destJar"
+          echo "JAR_PATH=$destJar" >> $GITHUB_ENV
 
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write  # Required for creating releases
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download JAR from artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: Hephaestus-JAR
-          path: artifacts/
-
-      - name: Get short commit SHA
-        run: echo "TAG_NAME=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+      - name: Push tags
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag "${{ env.FULL_TAG }}" -f
+          git tag "${{ env.VERSION_TAG }}" -f
+          git push origin "${{ env.FULL_TAG }}" --force
+          git push origin "${{ env.VERSION_TAG }}" --force
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ env.TAG_NAME }}
-          name: "Hephaestus ${{ env.TAG_NAME }}"
+          tag_name: ${{ env.FULL_TAG }}
+          name: "Hephaestus ${{ env.FULL_TAG }}"
           draft: false
-          prerelease: false
-          files: artifacts/Hephaestus-1.0.0-SNAPSHOT-all.jar
+          prerelease: ${{ env.CHANNEL != 'release' }}
+          files: ${{ env.JAR_PATH }}
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
