@@ -9,6 +9,7 @@ import io.github.qe7.core.manager.AbstractManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.events.KeyPressEvent;
 import io.github.qe7.features.modules.combat.AntiKnockbackModule;
+import io.github.qe7.features.modules.combat.ForceFieldModule;
 import io.github.qe7.features.modules.render.ClickGUIModule;
 import io.github.qe7.features.modules.render.HUDModule;
 
@@ -25,6 +26,7 @@ public final class ModuleManager extends AbstractManager<Class<? extends Abstrac
         moduleList.add(new ClickGUIModule());
         moduleList.add(new HUDModule());
         moduleList.add(new AntiKnockbackModule());
+        moduleList.add(new ForceFieldModule());
 
         this.registerAbstractModule(moduleList);
 

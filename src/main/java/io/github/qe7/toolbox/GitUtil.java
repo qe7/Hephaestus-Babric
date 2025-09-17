@@ -8,6 +8,7 @@ import java.util.Properties;
 
 @UtilityClass
 public final class GitUtil {
+
     private static final Properties props = new Properties();
 
     static {
