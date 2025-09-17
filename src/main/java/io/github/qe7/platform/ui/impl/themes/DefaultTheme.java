@@ -13,8 +13,7 @@ import io.github.qe7.platform.ui.api.component.special.EnumComponent;
 import io.github.qe7.platform.ui.api.component.special.KeyBindComponent;
 import io.github.qe7.platform.ui.api.component.special.ModeComponent;
 import io.github.qe7.platform.ui.api.component.special.ToggleComponent;
-import io.github.qe7.toolbox.GuiUtil;
-import net.minecraft.client.Minecraft;
+import io.github.qe7.toolbox.render.GuiUtil;
 import org.lwjgl.input.Keyboard;
 
 public final class DefaultTheme implements Theme, Global {

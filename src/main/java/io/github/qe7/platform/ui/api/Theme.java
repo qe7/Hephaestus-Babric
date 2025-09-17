@@ -1,6 +1,7 @@
 package io.github.qe7.platform.ui.api;
 
 import io.github.qe7.core.common.Global;
+import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.features.modules.render.ClickGUIModule;
 import io.github.qe7.platform.ui.api.component.Component;
 import io.github.qe7.platform.ui.api.component.FeatureComponent;
@@ -10,7 +11,9 @@ import io.github.qe7.platform.ui.api.component.special.EnumComponent;
 import io.github.qe7.platform.ui.api.component.special.KeyBindComponent;
 import io.github.qe7.platform.ui.api.component.special.ModeComponent;
 import io.github.qe7.platform.ui.api.component.special.ToggleComponent;
-import net.minecraft.src.FontRenderer;
+import io.github.qe7.toolbox.render.font.FontManager;
+import io.github.qe7.toolbox.render.font.FontType;
+import io.github.qe7.toolbox.render.font.renderer.TTFRenderer;
 
 public interface Theme extends Global {
 
@@ -63,15 +66,14 @@ public interface Theme extends Global {
     ClickGUIModule getClickGUIModule();
 
     default void drawString(String text, float x, float y, boolean primaryColor, boolean rightAligned) {
-        final FontRenderer fontRenderer = mc.fontRenderer;
-
+        final TTFRenderer fontRenderer = ManagerFactory.get(FontManager.class).getFontRenderer(FontType.TAHOMA, 18);
 
         final int color = primaryColor
                 ? getClickGUIModule().getPrimaryTextColor().getRGB()
                 : getClickGUIModule().getSecondaryTextColor().getRGB();
 
         final int alignOffset = (int) (rightAligned
-                ? x - fontRenderer.getStringWidth(text)
+                ? x - fontRenderer.getWidth(text)
                 : x);
 
         fontRenderer.drawStringWithShadow(text, alignOffset, (int) y, color);

@@ -1,4 +1,4 @@
-package io.github.qe7.toolbox;
+package io.github.qe7.toolbox.render;
 
 import lombok.experimental.UtilityClass;
 import net.minecraft.src.Tessellator;

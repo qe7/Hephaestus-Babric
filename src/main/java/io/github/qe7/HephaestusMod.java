@@ -5,6 +5,7 @@ import io.github.qe7.core.feature.command.CommandManager;
 import io.github.qe7.core.feature.module.ModuleManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.toolbox.GitUtil;
+import io.github.qe7.toolbox.render.font.FontManager;
 import lombok.Getter;
 import lombok.Setter;
 import net.fabricmc.api.ModInitializer;
@@ -33,6 +34,7 @@ public class HephaestusMod implements ModInitializer {
         ManagerFactory.register(EventManager.class, new EventManager());
         ManagerFactory.register(ModuleManager.class, new ModuleManager());
         ManagerFactory.register(CommandManager.class, new CommandManager());
+        ManagerFactory.register(FontManager.class, new FontManager());
     }
 
     @Override
