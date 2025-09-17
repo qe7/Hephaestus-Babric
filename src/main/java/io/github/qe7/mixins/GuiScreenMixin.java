@@ -3,15 +3,12 @@ package io.github.qe7.mixins;
 import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.events.GuiMouseReleasedEvent;
-import io.github.qe7.toolbox.ChatUtil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiScreen;
 import org.lwjgl.input.Mouse;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(GuiScreen.class)
 public abstract class GuiScreenMixin {
@@ -43,9 +40,10 @@ public abstract class GuiScreenMixin {
 
         if (Mouse.getEventButtonState()) {
             mouseClicked(i, j, k);
-        } else if (k != -1) {
-            ManagerFactory.get(EventManager.class).publishEvent(new GuiMouseReleasedEvent(i, j, k));
         } else {
+            if (k != -1) {
+                ManagerFactory.get(EventManager.class).publishEvent(new GuiMouseReleasedEvent(i, j, k));
+            }
             mouseMovedOrUp(i, j, k);
         }
     }
