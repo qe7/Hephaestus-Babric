@@ -2,6 +2,7 @@ package io.github.qe7.core.ui.component;
 
 import io.github.qe7.toolbox.animation.Easing;
 import io.github.qe7.toolbox.animation.TimeAnimation;
+import io.github.qe7.toolbox.render.ScissorUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.lwjgl.opengl.GL11;
@@ -51,11 +52,8 @@ public class ParentComponent extends AbstractComponent {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         renderComponent();
-
         GL11.glPushMatrix();
-//        ScissorUtil.prepareScissorBox(getX(), getY(), getX() + getWidth(), getY() + getHeight());
-//        GL11.glEnable(GL11.GL_SCISSOR_TEST);
-
+        ScissorUtil.prepareScissorBox(getX(), getY(), getX() + getWidth(), getY() + getHeight());
         setHeight(getHeaderHeight());
         animation.setState(open);
 
@@ -81,7 +79,7 @@ public class ParentComponent extends AbstractComponent {
             setHeight(getHeight() + getFooterHeight());
         }
 
-        GL11.glDisable(GL11.GL_SCISSOR_TEST);
+        ScissorUtil.disableScissor();
         GL11.glPopMatrix();
     }
 
