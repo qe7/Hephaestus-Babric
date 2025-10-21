@@ -4,9 +4,9 @@ import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
-import io.github.qe7.core.feature.module.settings.impl.ColorSetting;
+import io.github.qe7.core.feature.settings.impl.ColorSetting;
 import io.github.qe7.events.UpdateEvent;
-import io.github.qe7.platform.ui.ClickGuiScreen;
+import io.github.qe7.platform.ui.clickgui.ClickGUIScreen;
 import lombok.Getter;
 import org.lwjgl.input.Keyboard;
 
@@ -23,7 +23,7 @@ public final class ClickGUIModule extends AbstractModule {
     private final ColorSetting primaryTextColor = new ColorSetting("Primary Text Color", new Color(255, 255, 255, 255));
     private final ColorSetting secondaryTextColor = new ColorSetting("Secondary Text Color", new Color(169, 169, 169, 255));
 
-    private ClickGuiScreen clickGuiScreen;
+    private ClickGUIScreen clickGuiScreen;
 
     public ClickGUIModule() {
         super("Click GUI", "Displays a clickable interface to manage features", ModuleCategory.CLIENT);
@@ -36,7 +36,7 @@ public final class ClickGUIModule extends AbstractModule {
         super.onEnable();
 
         if (clickGuiScreen == null) {
-            clickGuiScreen = new ClickGuiScreen();
+            clickGuiScreen = new ClickGUIScreen();
             clickGuiScreen.loadComponents();
         }
         mc.displayGuiScreen(clickGuiScreen);
@@ -46,7 +46,7 @@ public final class ClickGUIModule extends AbstractModule {
     public void onDisable() {
         super.onDisable();
 
-        if (mc.currentScreen instanceof ClickGuiScreen) {
+        if (mc.currentScreen instanceof ClickGUIScreen) {
             mc.displayGuiScreen(null);
         }
     }
@@ -55,7 +55,7 @@ public final class ClickGUIModule extends AbstractModule {
     private final Listener<UpdateEvent> updateEventListener = event -> {
         // check if the GUI is still open, if not disable the module
         // ensures we don't reach a false enabled state. - qe7
-        if (!(mc.currentScreen instanceof ClickGuiScreen)) {
+        if (!(mc.currentScreen instanceof ClickGUIScreen)) {
             this.setEnabled(false);
         }
     };

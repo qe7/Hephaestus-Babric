@@ -2,8 +2,8 @@ package io.github.qe7.core.feature.module;
 
 import io.github.qe7.core.bus.Handler;
 import io.github.qe7.core.common.*;
-import io.github.qe7.core.feature.module.settings.AbstractSetting;
-import io.github.qe7.core.feature.module.settings.impl.KeyBindSetting;
+import io.github.qe7.core.feature.settings.AbstractSetting;
+import io.github.qe7.core.feature.settings.impl.KeyBindSetting;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.core.ui.component.Component;
 import io.github.qe7.core.ui.component.FeatureComponent;

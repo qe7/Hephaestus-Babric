@@ -1,30 +1,36 @@
-package io.github.qe7.core.feature.module.mode;
+package io.github.qe7.core.feature.hudelement.mode;
 
 import io.github.qe7.core.bus.Handler;
 import io.github.qe7.core.common.Global;
-import io.github.qe7.core.feature.module.AbstractModule;
+import io.github.qe7.core.feature.hudelement.AbstractHUDElement;
 import io.github.qe7.core.feature.settings.AbstractSetting;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 
-public class AbstractModuleMode<T extends AbstractModule> implements Handler, Global {
+public class AbstractElementMode<T extends AbstractHUDElement> implements Handler, Global {
 
+    @Getter
     private final List<AbstractSetting<?>> abstractSettings = new ArrayList<>();
 
-    protected final T module;
+    protected final T element;
 
     @Setter
+    @Getter
     private BooleanSupplier supplier;
+
+    @Getter
     private final String name;
 
+    @Getter
     @Setter
     private boolean lastState;
 
-    public AbstractModuleMode(T module, String name) {
-        this.module = module;
+    public AbstractElementMode(T element, String name) {
+        this.element = element;
         this.name = name;
     }
 
@@ -36,7 +42,7 @@ public class AbstractModuleMode<T extends AbstractModule> implements Handler, Gl
 
     @Override
     public boolean listening() {
-        boolean flag = module.isEnabled() && supplier.getAsBoolean();
+        boolean flag = element.isEnabled() && supplier.getAsBoolean();
 
         if (lastState != flag) {
             if (flag) {
@@ -51,23 +57,7 @@ public class AbstractModuleMode<T extends AbstractModule> implements Handler, Gl
         return flag;
     }
 
-    public List<AbstractSetting<?>> getAbstractSettings() {
-        return abstractSettings;
-    }
-
     public T getModule() {
-        return module;
-    }
-
-    public BooleanSupplier getSupplier() {
-        return supplier;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public boolean isLastState() {
-        return lastState;
+        return element;
     }
 }

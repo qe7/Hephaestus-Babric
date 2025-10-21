@@ -1,4 +1,4 @@
-package io.github.qe7.platform.ui.themes;
+package io.github.qe7.platform.ui.clickgui.themes;
 
 import io.github.qe7.core.common.Global;
 import io.github.qe7.core.feature.module.ModuleManager;
@@ -12,7 +12,6 @@ import io.github.qe7.core.ui.component.ParentComponent;
 import io.github.qe7.core.ui.component.WindowComponent;
 import io.github.qe7.core.ui.component.special.ToggleComponent;
 import io.github.qe7.toolbox.render.GuiUtil;
-import net.minecraft.client.Minecraft;
 
 import java.awt.*;
 

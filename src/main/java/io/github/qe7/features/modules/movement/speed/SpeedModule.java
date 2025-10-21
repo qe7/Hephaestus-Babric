@@ -4,7 +4,7 @@ import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
-import io.github.qe7.core.feature.module.settings.impl.ModeSetting;
+import io.github.qe7.core.feature.settings.impl.ModeSetting;
 import io.github.qe7.events.ScreenEvent;
 import io.github.qe7.features.modules.movement.speed.impl.ConstantSpeedMode;
 import io.github.qe7.features.modules.movement.speed.impl.PulseSpeedMode;

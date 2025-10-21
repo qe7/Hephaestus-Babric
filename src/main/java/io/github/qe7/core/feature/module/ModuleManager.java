@@ -4,10 +4,11 @@ import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.bus.Handler;
 import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
-import io.github.qe7.core.feature.module.settings.AbstractSetting;
+import io.github.qe7.core.feature.settings.AbstractSetting;
 import io.github.qe7.core.manager.AbstractManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.events.KeyPressEvent;
+import io.github.qe7.features.modules.client.HUDEditorModule;
 import io.github.qe7.features.modules.combat.AntiKnockbackModule;
 import io.github.qe7.features.modules.combat.ForceFieldModule;
 import io.github.qe7.features.modules.client.ClickGUIModule;
@@ -27,6 +28,7 @@ public final class ModuleManager extends AbstractManager<Class<? extends Abstrac
         List<AbstractModule> moduleList = new ArrayList<>();
 
         moduleList.add(new ClickGUIModule());
+        moduleList.add(new HUDEditorModule());
         moduleList.add(new HUDModule());
         moduleList.add(new AntiKnockbackModule());
         moduleList.add(new ForceFieldModule());

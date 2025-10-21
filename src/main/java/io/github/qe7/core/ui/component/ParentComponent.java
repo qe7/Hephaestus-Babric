@@ -1,5 +1,7 @@
 package io.github.qe7.core.ui.component;
 
+import io.github.qe7.toolbox.animation.Easing;
+import io.github.qe7.toolbox.animation.TimeAnimation;
 import lombok.Getter;
 import lombok.Setter;
 import org.lwjgl.opengl.GL11;
@@ -15,6 +17,8 @@ public class ParentComponent extends AbstractComponent {
     public List<Component> children = new ArrayList<>();
 
     protected boolean open = false;
+
+    protected final TimeAnimation animation = new TimeAnimation(false, 0, 1, 175, Easing.CUBIC_IN_OUT);
 
     public ParentComponent(Supplier<Boolean> visibilitySupplier, String name) {
         super(visibilitySupplier, name);
@@ -53,6 +57,7 @@ public class ParentComponent extends AbstractComponent {
 //        GL11.glEnable(GL11.GL_SCISSOR_TEST);
 
         setHeight(getHeaderHeight());
+        animation.setState(open);
 
         if (isOpen()) {
             setHeight(getHeight() + getFooterHeight());
@@ -65,6 +70,9 @@ public class ParentComponent extends AbstractComponent {
                     child.drawScreen(mouseX, mouseY, partialTicks);
 
                     float heightToAdd = child.getHeight();
+                    if (!(child instanceof FeatureComponent)) {
+                        heightToAdd *= animation.getCurrent();
+                    }
 
                     setHeight(getHeight() + heightToAdd);
                 }
@@ -75,6 +83,11 @@ public class ParentComponent extends AbstractComponent {
 
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
         GL11.glPopMatrix();
+    }
+
+    public boolean isOpen()
+    {
+        return animation.getCurrent() > 0.01;
     }
 
     @Override

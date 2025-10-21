@@ -7,6 +7,9 @@ import org.lwjgl.opengl.GL11;
 @UtilityClass
 public final class GuiUtil {
 
+    public static boolean OVERRIDE = false;
+    public static float OVERRIDE_MULTIPLIER = 1;
+
     public static void drawRect(float left, float top, float right, float bottom, int color) {
         float var6;
         if (left < right) {
@@ -22,6 +25,11 @@ public final class GuiUtil {
         }
 
         float alpha = (float)(color >> 24 & 255) / 255.0F;
+
+        if (OVERRIDE) {
+            alpha *= OVERRIDE_MULTIPLIER;
+        }
+
         float red = (float)(color >> 16 & 255) / 255.0F;
         float green = (float)(color >> 8 & 255) / 255.0F;
         float blue = (float)(color & 255) / 255.0F;

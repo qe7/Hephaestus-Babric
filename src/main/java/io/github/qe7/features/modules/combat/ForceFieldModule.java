@@ -4,15 +4,13 @@ import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
-import io.github.qe7.core.feature.module.settings.impl.BooleanSetting;
-import io.github.qe7.core.feature.module.settings.impl.FloatSetting;
-import io.github.qe7.core.feature.module.settings.impl.IntSetting;
+import io.github.qe7.core.feature.settings.impl.BooleanSetting;
+import io.github.qe7.core.feature.settings.impl.FloatSetting;
+import io.github.qe7.core.feature.settings.impl.IntSetting;
 import io.github.qe7.events.UpdateEvent;
-import io.github.qe7.toolbox.PacketUtil;
 import io.github.qe7.toolbox.Stopwatch;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLiving;
-import net.minecraft.src.Packet7UseEntity;
 
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -6,7 +6,7 @@ import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
 import io.github.qe7.core.feature.module.ModuleManager;
-import io.github.qe7.core.feature.module.settings.impl.BooleanSetting;
+import io.github.qe7.core.feature.settings.impl.BooleanSetting;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.events.ScreenEvent;
 import net.minecraft.src.FontRenderer;

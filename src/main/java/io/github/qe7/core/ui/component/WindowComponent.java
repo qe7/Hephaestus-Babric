@@ -34,16 +34,12 @@ public class WindowComponent extends ParentComponent {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
 
-        if (dragHandler == null)
-        {
-            this.dragHandler = new DragHandler(getX(),
-                    getY());
+        if (dragHandler == null) {
+            this.dragHandler = new DragHandler(getX(), getY());
         }
 
-        dragHandler.handleRender(mouseX,
-                mouseY);
-        if (dragHandler.isDragging())
-        {
+        dragHandler.handleRender(mouseX, mouseY);
+        if (dragHandler.isDragging()) {
             setX(dragHandler.getX());
             setY(dragHandler.getY());
         }
@@ -58,27 +54,19 @@ public class WindowComponent extends ParentComponent {
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
         super.mouseClicked(mouseX, mouseY, mouseButton);
 
-        if (dragHandler == null)
-        {
-            this.dragHandler = new DragHandler(getX(),
-                    getY());
+        if (dragHandler == null) {
+            this.dragHandler = new DragHandler(getX(), getY());
         }
 
-        dragHandler.handleMouseClicked(
-                (float) mouseX,
-                (float) mouseY,
-                mouseButton,
-                isMouseOver(mouseX, mouseY, getHeaderHeight()));
+        dragHandler.handleMouseClicked((float) mouseX, (float) mouseY, mouseButton, isMouseOver(mouseX, mouseY, getHeaderHeight()));
     }
 
     @Override
     public void mouseReleased(int mouseX, int mouseY, int state) {
         super.mouseReleased(mouseX, mouseY, state);
 
-        if (dragHandler == null)
-        {
-            this.dragHandler = new DragHandler(getX(),
-                    getY());
+        if (dragHandler == null) {
+            this.dragHandler = new DragHandler(getX(), getY());
         }
 
         dragHandler.setDragging(false);

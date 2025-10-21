@@ -1,53 +1,347 @@
 package io.github.qe7.toolbox.animation;
 
-import lombok.Getter;
-
-import java.util.function.Function;
-
-import static java.lang.Math.pow;
-import static java.lang.Math.sin;
-
-/**
- * This is the easing class which is used to manage the different easing functions.
- * Each function is supposed to return a value between 0 and 1.
- * More easing functions can be found here: <a href="https://easings.net/">...</a>
- */
-@Getter
 public enum Easing {
-    LINEAR(x -> x),
-    EASE_IN_QUAD(x -> x * x),
-    EASE_OUT_QUAD(x -> x * (2 - x)),
-    EASE_IN_OUT_QUAD(x -> x < 0.5 ? 2 * x * x : -1 + (4 - 2 * x) * x),
-    EASE_IN_CUBIC(x -> x * x * x),
-    EASE_OUT_CUBIC(x -> (--x) * x * x + 1),
-    EASE_IN_OUT_CUBIC(x -> x < 0.5 ? 4 * x * x * x : (x - 1) * (2 * x - 2) * (2 * x - 2) + 1),
-    EASE_IN_QUART(x -> x * x * x * x),
-    EASE_OUT_QUART(x -> 1 - (--x) * x * x * x),
-    EASE_IN_OUT_QUART(x -> x < 0.5 ? 8 * x * x * x * x : 1 - 8 * (--x) * x * x * x),
-    EASE_IN_QUINT(x -> x * x * x * x * x),
-    EASE_OUT_QUINT(x -> 1 + (--x) * x * x * x * x),
-    EASE_IN_OUT_QUINT(x -> x < 0.5 ? 16 * x * x * x * x * x : 1 + 16 * (--x) * x * x * x * x),
-    EASE_IN_SINE(x -> 1 - Math.cos(x * Math.PI / 2)),
-    EASE_OUT_SINE(x -> sin(x * Math.PI / 2)),
-    EASE_IN_OUT_SINE(x -> 1 - Math.cos(Math.PI * x / 2)),
-    EASE_IN_EXPO(x -> x == 0 ? 0 : pow(2, 10 * x - 10)),
-    EASE_OUT_EXPO(x -> x == 1 ? 1 : 1 - pow(2, -10 * x)),
-    EASE_IN_OUT_EXPO(x -> x == 0 ? 0 : x == 1 ? 1 : x < 0.5 ? pow(2, 20 * x - 10) / 2 : (2 - pow(2, -20 * x + 10)) / 2),
-    EASE_IN_CIRC(x -> 1 - Math.sqrt(1 - x * x)),
-    EASE_OUT_CIRC(x -> Math.sqrt(1 - (--x) * x)),
-    EASE_IN_OUT_CIRC(x -> x < 0.5 ? (1 - Math.sqrt(1 - 4 * x * x)) / 2 : (Math.sqrt(1 - 4 * (x - 1) * x) + 1) / 2),
-    SIGMOID(x -> 1 / (1 + Math.exp(-x))),
-    EASE_OUT_ELASTIC(x -> x == 0 ? 0 : x == 1 ? 1 : pow(2, -10 * x) * sin((x * 10 - 0.75) * ((2 * Math.PI) / 3)) * 0.5 + 1),
-    EASE_IN_BACK(x -> (1.70158 + 1) * x * x * x - 1.70158 * x * x);
 
-    private final Function<Double, Double> function;
+    /**
+     * No easing.
+     */
+    LINEAR {
+        @Override
+        public double ease(double factor) {
+            return factor;
+        }
+    },
 
-    Easing(final Function<Double, Double> function) {
-        this.function = function;
-    }
+    /**
+     * @see <a href="https://easings.net/#easeInSine">The easing on easings.net</a>
+     */
+    SINE_IN {
+        @Override
+        public double ease(double factor) {
+            return 1 - Math.cos((factor * Math.PI) / 2);
+        }
+    },
 
-    @Override
-    public String toString() {
-        return name().toLowerCase().replace("_", " ");
+    /**
+     * @see <a href="https://easings.net/#easeOutSine">The easing on easings.net</a>
+     */
+    SINE_OUT {
+        @Override
+        public double ease(double factor) {
+            return Math.sin((factor * Math.PI) / 2);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInOutSine">The easing on easings.net</a>
+     */
+    SINE_IN_OUT {
+        @Override
+        public double ease(double factor) {
+            return -(Math.cos(Math.PI * factor) - 1) / 2;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInCubic">The easing on easings.net</a>
+     */
+    CUBIC_IN {
+        @Override
+        public double ease(double factor) {
+            return Math.pow(factor, 3);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeOutCubic">The easing on easings.net</a>
+     */
+    CUBIC_OUT {
+        @Override
+        public double ease(double factor) {
+            return 1 - Math.pow(1 - factor, 3);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInOutCubic">The easing on easings.net</a>
+     */
+    CUBIC_IN_OUT {
+        @Override
+        public double ease(double factor) {
+            return factor < 0.5 ? 4 * Math.pow(factor, 3) : 1 - Math.pow(-2 * factor + 2, 3) / 2;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInQuad">The easing on easings.net</a>
+     */
+    QUAD_IN {
+        @Override
+        public double ease(double factor) {
+            return Math.pow(factor, 2);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeOutQuad">The easing on easings.net</a>
+     */
+    QUAD_OUT {
+        @Override
+        public double ease(double factor) {
+            return 1 - (1 - factor) * (1 - factor);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInOutQuad">The easing on easings.net</a>
+     */
+    QUAD_IN_OUT {
+        @Override
+        public double ease(double factor) {
+            return factor < 0.5 ? 8 * Math.pow(factor, 4) : 1 - Math.pow(-2 * factor + 2, 4) / 2;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInQuart">The easing on easings.net</a>
+     */
+    QUART_IN {
+        @Override
+        public double ease(double factor) {
+            return Math.pow(factor, 4);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeOutQuart">The easing on easings.net</a>
+     */
+    QUART_OUT {
+        @Override
+        public double ease(double factor) {
+            return 1 - Math.pow(1 - factor, 4);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInOutQuart">The easing on easings.net</a>
+     */
+    QUART_IN_OUT {
+        @Override
+        public double ease(double factor) {
+            return factor < 0.5 ? 8 * Math.pow(factor, 4) : 1 - Math.pow(-2 * factor + 2, 4) / 2;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInQuint">The easing on easings.net</a>
+     */
+    QUINT_IN {
+        @Override
+        public double ease(double factor) {
+            return Math.pow(factor, 5);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeOutQuint">The easing on easings.net</a>
+     */
+    QUINT_OUT {
+        @Override
+        public double ease(double factor) {
+            return 1 - Math.pow(1 - factor, 5);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInOutQuint">The easing on easings.net</a>
+     */
+    QUINT_IN_OUT {
+        @Override
+        public double ease(double factor) {
+            return factor < 0.5 ? 16 * Math.pow(factor, 5) : 1 - Math.pow(-2 * factor + 2, 5) / 2;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInCirc">The easing on easings.net</a>
+     */
+    CIRC_IN {
+        @Override
+        public double ease(double factor) {
+            return 1 - Math.sqrt(1 - Math.pow(factor, 2));
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeOutCirc">The easing on easings.net</a>
+     */
+    CIRC_OUT {
+        @Override
+        public double ease(double factor) {
+            return Math.sqrt(1 - Math.pow(factor - 1, 2));
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInOutCirc">The easing on easings.net</a>
+     */
+    CIRC_IN_OUT {
+        @Override
+        public double ease(double factor) {
+            return factor < 0.5 ? (1 - Math.sqrt(1 - Math.pow(2 * factor, 2))) / 2 : (Math.sqrt(1 - Math.pow(-2 * factor + 2, 2)) + 1) / 2;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInExpo">The easing on easings.net</a>
+     */
+    EXPO_IN {
+        @Override
+        public double ease(double factor) {
+            return Math.min(0, Math.pow(2, 10 * factor - 10));
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeOutExpo">The easing on easings.net</a>
+     */
+    EXPO_OUT {
+        @Override
+        public double ease(double factor) {
+            return Math.max(1 - Math.pow(2, -10 * factor), 1);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInOutExpo">The easing on easings.net</a>
+     */
+    EXPO_IN_OUT {
+        @Override
+        public double ease(double factor) {
+            return factor == 0 ? 0 : factor == 1 ? 1 : factor < 0.5 ? Math.pow(2, 20 * factor - 10) / 2 : (2 - Math.pow(2, -20 * factor + 10)) / 2;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInElastic">The easing on easings.net</a>
+     */
+    ELASTIC_IN {
+        @Override
+        public double ease(double factor) {
+            return factor == 0 ? 0 : factor == 1 ? 1 : -Math.pow(2, 10 * factor - 10) * Math.sin((factor * 10 - 10.75) * ((2 * Math.PI) / 3));
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeOutElastic">The easing on easings.net</a>
+     */
+    ELASTIC_OUT {
+        @Override
+        public double ease(double factor) {
+            return factor == 0 ? 0 : factor == 1 ? 1 : Math.pow(2, -10 * factor) * Math.sin((factor * 10 - 0.75) * ((2 * Math.PI) / 3)) + 1;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInOutElastic">The easing on easings.net</a>
+     */
+    ELASTIC_IN_OUT {
+        @Override
+        public double ease(double factor) {
+            double sin = Math.sin((20 * factor - 11.125) * ((2 * Math.PI) / 4.5));
+
+            return factor == 0 ? 0 : factor == 1 ? 1 : factor < 0.5 ? -(Math.pow(2, 20 * factor - 10) * sin) / 2 : (Math.pow(2, -20 * factor + 10) * sin) / 2 + 1;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInBack">The easing on easings.net</a>
+     */
+    BACK_IN {
+        @Override
+        public double ease(double factor) {
+            return 2.70158 * Math.pow(factor, 3) - 1.70158 * factor * factor;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeOutBack">The easing on easings.net</a>
+     */
+    BACK_OUT {
+        @Override
+        public double ease(double factor) {
+            double c1 = 1.70158;
+            double c3 = c1 + 1;
+
+            return 1 + c3 * Math.pow(factor - 1, 3) + c1 * Math.pow(factor - 1, 2);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInOutBack">The easing on easings.net</a>
+     */
+    BACK_IN_OUT {
+        @Override
+        public double ease(double factor) {
+            return factor < 0.5 ? (Math.pow(2 * factor, 2) * (((1.70158 * 1.525) + 1) * 2 * factor - (1.70158 * 1.525))) / 2 : (Math.pow(2 * factor - 2, 2) * (((1.70158 * 1.525) + 1) * (factor * 2 - 2) + (1.70158 * 1.525)) + 2) / 2;
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInBounce">The easing on easings.net</a>
+     */
+    BOUNCE_IN {
+        @Override
+        public double ease(double factor) {
+            return 1 - Easing.bounceOut(1 - factor);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeOutBounce">The easing on easings.net</a>
+     */
+    BOUNCE_OUT {
+        @Override
+        public double ease(double factor) {
+            return Easing.bounceOut(factor);
+        }
+    },
+
+    /**
+     * @see <a href="https://easings.net/#easeInOutBounce">The easing on easings.net</a>
+     */
+    BOUNCE_IN_OUT {
+        public double ease(double factor) {
+            return factor < 0.5 ? (1 - bounceOut(1 - 2 * factor)) / 2 : (1 + bounceOut(2 * factor - 1)) / 2;
+        }
+    };
+
+    /**
+     * Eases the given factor
+     *
+     * @param factor The linear animation factor - between 0 and 1
+     * @return The eased factor
+     */
+    public abstract double ease(double factor);
+
+    /**
+     * Internal use only! Bounce out method because that's how easings.net does it.
+     *
+     * @param in The linear factor we provide.
+     * @return The eased value
+     */
+    private static double bounceOut(double in) {
+        double n1 = 7.5625;
+        double d1 = 2.75;
+
+        if (in < 1 / d1) {
+            return n1 * in * in;
+        } else if (in < 2 / d1) {
+            return n1 * (in -= 1.5 / d1) * in + 0.75;
+        } else if (in < 2.5 / d1) {
+            return n1 * (in -= 2.25 / d1) * in + 0.9375;
+        } else {
+            return n1 * (in -= 2.625 / d1) * in + 0.984375;
+        }
     }
 }

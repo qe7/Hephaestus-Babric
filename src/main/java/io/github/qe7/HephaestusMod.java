@@ -2,6 +2,7 @@ package io.github.qe7;
 
 import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.feature.command.CommandManager;
+import io.github.qe7.core.feature.hudelement.HUDElementManager;
 import io.github.qe7.core.feature.module.ModuleManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.toolbox.GitUtil;
@@ -33,6 +34,7 @@ public class HephaestusMod implements ModInitializer {
 
         ManagerFactory.register(EventManager.class, new EventManager());
         ManagerFactory.register(ModuleManager.class, new ModuleManager());
+        ManagerFactory.register(HUDElementManager.class, new HUDElementManager());
         ManagerFactory.register(CommandManager.class, new CommandManager());
         ManagerFactory.register(FontManager.class, new FontManager());
     }

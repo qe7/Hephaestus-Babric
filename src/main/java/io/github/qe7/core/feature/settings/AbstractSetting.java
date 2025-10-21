@@ -1,4 +1,4 @@
-package io.github.qe7.core.feature.module.settings;
+package io.github.qe7.core.feature.settings;
 
 import io.github.qe7.core.common.Displayable;
 import io.github.qe7.core.common.Serialized;
