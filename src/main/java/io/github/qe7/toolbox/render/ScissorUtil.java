@@ -1,11 +1,11 @@
 package io.github.qe7.toolbox.render;
 
-import io.github.qe7.core.common.Global;
+import io.github.qe7.core.common.Globals;
 import lombok.experimental.UtilityClass;
 import org.lwjgl.opengl.GL11;
 
 @UtilityClass
-public final class ScissorUtil implements Global {
+public final class ScissorUtil implements Globals {
 
     public static void prepareScissorBox(float startX, float startY, float endX, float endY) {
         int displayWidth = mc.displayWidth;

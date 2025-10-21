@@ -1,6 +1,6 @@
 package io.github.qe7.platform.ui.clickgui.themes;
 
-import io.github.qe7.core.common.Global;
+import io.github.qe7.core.common.Globals;
 import io.github.qe7.core.feature.module.ModuleManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.core.ui.component.special.ColorComponent;
@@ -15,7 +15,7 @@ import io.github.qe7.toolbox.render.GuiUtil;
 
 import java.awt.*;
 
-public final class DefaultTheme implements Theme, Global {
+public final class DefaultTheme implements Theme, Globals {
 
     private ClickGUIModule clickGUIModule;
 

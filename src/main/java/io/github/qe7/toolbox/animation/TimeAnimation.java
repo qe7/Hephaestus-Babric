@@ -1,10 +1,10 @@
 package io.github.qe7.toolbox.animation;
 
-import io.github.qe7.core.common.Global;
+import io.github.qe7.core.common.Globals;
 import lombok.Getter;
 import lombok.Setter;
 
-public class TimeAnimation implements Global {
+public class TimeAnimation implements Globals {
 
     private Easing mode;
 

@@ -2,7 +2,7 @@ package io.github.qe7.core.feature.hudelement;
 
 import io.github.qe7.core.bus.Handler;
 import io.github.qe7.core.common.Displayable;
-import io.github.qe7.core.common.Global;
+import io.github.qe7.core.common.Globals;
 import io.github.qe7.core.common.Nameable;
 import io.github.qe7.core.common.Toggleable;
 import io.github.qe7.core.feature.settings.AbstractSetting;
@@ -15,7 +15,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class AbstractHUDElement implements Global, Nameable, Toggleable, Handler, Displayable {
+public abstract class AbstractHUDElement implements Globals, Nameable, Toggleable, Handler, Displayable {
 
     private final String name;
 

@@ -1,7 +1,7 @@
 package io.github.qe7.core.feature.module.mode;
 
 import io.github.qe7.core.bus.Handler;
-import io.github.qe7.core.common.Global;
+import io.github.qe7.core.common.Globals;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.settings.AbstractSetting;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 
-public class AbstractModuleMode<T extends AbstractModule> implements Handler, Global {
+public class AbstractModuleMode<T extends AbstractModule> implements Handler, Globals {
 
     private final List<AbstractSetting<?>> abstractSettings = new ArrayList<>();
 

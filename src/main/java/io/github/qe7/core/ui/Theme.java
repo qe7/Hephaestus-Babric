@@ -1,6 +1,6 @@
 package io.github.qe7.core.ui;
 
-import io.github.qe7.core.common.Global;
+import io.github.qe7.core.common.Globals;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.core.ui.component.Component;
 import io.github.qe7.core.ui.component.FeatureComponent;
@@ -15,7 +15,7 @@ import io.github.qe7.toolbox.render.font.renderer.TTFRenderer;
 
 import java.awt.*;
 
-public interface Theme extends Global {
+public interface Theme extends Globals {
 
     String getName();
 

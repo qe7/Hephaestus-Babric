@@ -14,7 +14,7 @@ import org.lwjgl.input.Keyboard;
 
 @Getter
 @Setter
-public abstract class AbstractModule implements Global, Nameable, Displayable, Descriptionable, Hideable, Toggleable, Handler {
+public abstract class AbstractModule implements Globals, Nameable, Displayable, Descriptionable, Hideable, Toggleable, Handler {
 
     private final ModuleCategory category;
 

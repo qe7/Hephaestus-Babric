@@ -1,10 +1,10 @@
 package io.github.qe7.toolbox;
 
-import io.github.qe7.core.common.Global;
+import io.github.qe7.core.common.Globals;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public final class ChatUtil implements Global {
+public final class ChatUtil implements Globals {
 
     public static void addMessage(final String message) {
         if (mc.thePlayer == null) return;

@@ -4,7 +4,7 @@ import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.bus.Handler;
 import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
-import io.github.qe7.core.common.Global;
+import io.github.qe7.core.common.Globals;
 import io.github.qe7.core.manager.AbstractManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.events.PacketEvent;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class CommandManager extends AbstractManager<Class<? extends AbstractCommand>, AbstractCommand> implements Handler, Global {
+public final class CommandManager extends AbstractManager<Class<? extends AbstractCommand>, AbstractCommand> implements Handler, Globals {
 
     public CommandManager() {
         List<AbstractCommand> commandList = new ArrayList<>();
