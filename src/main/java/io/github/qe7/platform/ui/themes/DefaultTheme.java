@@ -1,18 +1,18 @@
-package io.github.qe7.platform.ui.impl.themes;
+package io.github.qe7.platform.ui.themes;
 
 import io.github.qe7.core.common.Global;
 import io.github.qe7.core.feature.module.ModuleManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.features.modules.render.ClickGUIModule;
-import io.github.qe7.platform.ui.api.Theme;
-import io.github.qe7.platform.ui.api.component.Component;
-import io.github.qe7.platform.ui.api.component.FeatureComponent;
-import io.github.qe7.platform.ui.api.component.ParentComponent;
-import io.github.qe7.platform.ui.api.component.WindowComponent;
-import io.github.qe7.platform.ui.api.component.special.EnumComponent;
-import io.github.qe7.platform.ui.api.component.special.KeyBindComponent;
-import io.github.qe7.platform.ui.api.component.special.ModeComponent;
-import io.github.qe7.platform.ui.api.component.special.ToggleComponent;
+import io.github.qe7.core.ui.Theme;
+import io.github.qe7.core.ui.component.Component;
+import io.github.qe7.core.ui.component.FeatureComponent;
+import io.github.qe7.core.ui.component.ParentComponent;
+import io.github.qe7.core.ui.component.WindowComponent;
+import io.github.qe7.core.ui.component.special.EnumComponent;
+import io.github.qe7.core.ui.component.special.KeyBindComponent;
+import io.github.qe7.core.ui.component.special.ModeComponent;
+import io.github.qe7.core.ui.component.special.ToggleComponent;
 import io.github.qe7.toolbox.render.GuiUtil;
 import org.lwjgl.input.Keyboard;
 
@@ -107,8 +107,6 @@ public final class DefaultTheme implements Theme, Global {
         }
 
         drawString(component.getName(), component.getX() + getWindowTextOffset(), component.getY() + ((getWindowHeaderHeight() / 2.0f) - (9 / 2.0f)), true, false);
-
-        drawString(component.isOpen() ? "-" : "+", component.getX() + component.getWidth() - getWindowTextOffset(), component.getY() + ((getWindowHeaderHeight() / 2.0f) - (9 / 2.0f)), true, true);
     }
 
     @Override
@@ -120,8 +118,6 @@ public final class DefaultTheme implements Theme, Global {
         }
 
         drawString(component.getName(), component.getX() + getFeatureTextOffset(), component.getY() + ((getFeatureHeaderHeight() / 2.0f) - (9 / 2.0f)), true, false);
-
-        drawString(component.isOpen() ? "-" : "+", component.getX() + component.getWidth() - getFeatureTextOffset(), component.getY() + ((getFeatureHeaderHeight() / 2.0f) - (9 / 2.0f)), true, true);
     }
 
     @Override

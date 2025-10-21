@@ -2,8 +2,8 @@ package io.github.qe7.core.feature.module.settings.impl;
 
 import com.google.gson.JsonObject;
 import io.github.qe7.core.feature.module.settings.AbstractSetting;
-import io.github.qe7.platform.ui.api.component.Component;
-import io.github.qe7.platform.ui.api.component.special.TextComponent;
+import io.github.qe7.core.ui.component.Component;
+import io.github.qe7.core.ui.component.special.TextComponent;
 
 public final class StringSetting extends AbstractSetting<String> {
 

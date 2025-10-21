@@ -1,4 +1,4 @@
-package io.github.qe7.platform.ui.api.component.slider;
+package io.github.qe7.core.ui.component.slider;
 
 import io.github.qe7.toolbox.MathUtil;
 

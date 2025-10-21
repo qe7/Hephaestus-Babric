@@ -3,8 +3,8 @@ package io.github.qe7.core.feature.module.settings.impl;
 import com.google.gson.JsonObject;
 import io.github.qe7.core.feature.module.settings.AbstractSetting;
 import io.github.qe7.core.feature.module.settings.impl.interfaces.IEnumSetting;
-import io.github.qe7.platform.ui.api.component.Component;
-import io.github.qe7.platform.ui.api.component.special.EnumComponent;
+import io.github.qe7.core.ui.component.Component;
+import io.github.qe7.core.ui.component.special.EnumComponent;
 import lombok.Getter;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package io.github.qe7.platform.ui.impl;
+package io.github.qe7.platform.ui;
 
 import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.bus.Listener;
@@ -8,9 +8,9 @@ import io.github.qe7.core.feature.module.ModuleCategory;
 import io.github.qe7.core.feature.module.ModuleManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.events.GuiMouseReleasedEvent;
-import io.github.qe7.platform.ui.api.GuiHephaestus;
-import io.github.qe7.platform.ui.api.component.Component;
-import io.github.qe7.platform.ui.api.component.WindowComponent;
+import io.github.qe7.core.ui.GuiHephaestus;
+import io.github.qe7.core.ui.component.Component;
+import io.github.qe7.core.ui.component.WindowComponent;
 
 import java.util.List;
 import java.util.stream.Collectors;

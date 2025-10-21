@@ -1,11 +1,11 @@
-package io.github.qe7.platform.ui.api;
+package io.github.qe7.core.ui;
 
 import io.github.qe7.core.bus.Handler;
 import io.github.qe7.core.feature.module.ModuleManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.features.modules.render.ClickGUIModule;
-import io.github.qe7.platform.ui.api.component.Component;
-import io.github.qe7.platform.ui.api.component.WindowComponent;
+import io.github.qe7.core.ui.component.Component;
+import io.github.qe7.core.ui.component.WindowComponent;
 import lombok.Getter;
 import net.minecraft.src.GuiScreen;
 import org.lwjgl.input.Keyboard;

@@ -1,7 +1,7 @@
-package io.github.qe7.platform.ui.api.component.slider;
+package io.github.qe7.core.ui.component.slider;
 
-import io.github.qe7.platform.ui.api.TextHandler;
-import io.github.qe7.platform.ui.api.component.AbstractComponent;
+import io.github.qe7.core.ui.TextHandler;
+import io.github.qe7.core.ui.component.AbstractComponent;
 import org.lwjgl.input.Keyboard;
 
 import java.util.function.Supplier;

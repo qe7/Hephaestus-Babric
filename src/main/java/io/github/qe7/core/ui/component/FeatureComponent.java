@@ -1,4 +1,4 @@
-package io.github.qe7.platform.ui.api.component;
+package io.github.qe7.core.ui.component;
 
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;

@@ -1,6 +1,6 @@
-package io.github.qe7.platform.ui.api.component;
+package io.github.qe7.core.ui.component;
 
-import io.github.qe7.platform.ui.api.DragHandler;
+import io.github.qe7.core.ui.DragHandler;
 
 public class WindowComponent extends ParentComponent {
 

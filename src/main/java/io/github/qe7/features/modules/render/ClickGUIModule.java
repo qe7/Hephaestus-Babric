@@ -5,7 +5,7 @@ import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
 import io.github.qe7.events.UpdateEvent;
-import io.github.qe7.platform.ui.impl.ClickGuiScreen;
+import io.github.qe7.platform.ui.ClickGuiScreen;
 import lombok.Getter;
 import org.lwjgl.input.Keyboard;
 

@@ -1,8 +1,8 @@
-package io.github.qe7.platform.ui.api.component.special;
+package io.github.qe7.core.ui.component.special;
 
 import io.github.qe7.core.feature.module.settings.impl.EnumSetting;
 import io.github.qe7.core.feature.module.settings.impl.interfaces.IEnumSetting;
-import io.github.qe7.platform.ui.api.component.ParentComponent;
+import io.github.qe7.core.ui.component.ParentComponent;
 import lombok.Getter;
 
 @Getter

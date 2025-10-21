@@ -1,4 +1,4 @@
-package io.github.qe7.platform.ui.api;
+package io.github.qe7.core.ui;
 
 import io.github.qe7.toolbox.Stopwatch;
 

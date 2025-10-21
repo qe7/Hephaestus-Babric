@@ -5,8 +5,8 @@ import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.feature.module.mode.AbstractModuleMode;
 import io.github.qe7.core.feature.module.settings.AbstractSetting;
 import io.github.qe7.core.manager.ManagerFactory;
-import io.github.qe7.platform.ui.api.component.Component;
-import io.github.qe7.platform.ui.api.component.special.ModeComponent;
+import io.github.qe7.core.ui.component.Component;
+import io.github.qe7.core.ui.component.special.ModeComponent;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,10 +1,10 @@
-package io.github.qe7.platform.ui.api.component;
+package io.github.qe7.core.ui.component;
 
 import io.github.qe7.core.feature.module.ModuleManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.features.modules.render.ClickGUIModule;
-import io.github.qe7.platform.ui.api.Theme;
-import io.github.qe7.platform.ui.impl.themes.DefaultTheme;
+import io.github.qe7.core.ui.Theme;
+import io.github.qe7.platform.ui.themes.DefaultTheme;
 
 import java.util.function.Supplier;
 

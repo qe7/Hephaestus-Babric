@@ -2,9 +2,9 @@ package io.github.qe7.core.feature.module.settings.impl;
 
 import com.google.gson.JsonObject;
 import io.github.qe7.core.feature.module.settings.AbstractSetting;
-import io.github.qe7.platform.ui.api.component.Component;
-import io.github.qe7.platform.ui.api.component.slider.SliderComponent;
-import io.github.qe7.platform.ui.api.component.slider.SliderHandler;
+import io.github.qe7.core.ui.component.Component;
+import io.github.qe7.core.ui.component.slider.SliderComponent;
+import io.github.qe7.core.ui.component.slider.SliderHandler;
 import lombok.Getter;
 
 @Getter

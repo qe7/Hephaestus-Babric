@@ -1,16 +1,16 @@
-package io.github.qe7.platform.ui.api;
+package io.github.qe7.core.ui;
 
 import io.github.qe7.core.common.Global;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.features.modules.render.ClickGUIModule;
-import io.github.qe7.platform.ui.api.component.Component;
-import io.github.qe7.platform.ui.api.component.FeatureComponent;
-import io.github.qe7.platform.ui.api.component.ParentComponent;
-import io.github.qe7.platform.ui.api.component.WindowComponent;
-import io.github.qe7.platform.ui.api.component.special.EnumComponent;
-import io.github.qe7.platform.ui.api.component.special.KeyBindComponent;
-import io.github.qe7.platform.ui.api.component.special.ModeComponent;
-import io.github.qe7.platform.ui.api.component.special.ToggleComponent;
+import io.github.qe7.core.ui.component.Component;
+import io.github.qe7.core.ui.component.FeatureComponent;
+import io.github.qe7.core.ui.component.ParentComponent;
+import io.github.qe7.core.ui.component.WindowComponent;
+import io.github.qe7.core.ui.component.special.EnumComponent;
+import io.github.qe7.core.ui.component.special.KeyBindComponent;
+import io.github.qe7.core.ui.component.special.ModeComponent;
+import io.github.qe7.core.ui.component.special.ToggleComponent;
 import io.github.qe7.toolbox.render.font.FontManager;
 import io.github.qe7.toolbox.render.font.FontType;
 import io.github.qe7.toolbox.render.font.renderer.TTFRenderer;
