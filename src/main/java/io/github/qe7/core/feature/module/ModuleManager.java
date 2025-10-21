@@ -51,6 +51,8 @@ public final class ModuleManager extends AbstractManager<Class<? extends Abstrac
                         }
                     }
                 }
+
+                this.registerAbstractSetting(module, module.getKeyBindSetting());
             } catch (Exception ignored) {
             }
         }
@@ -88,7 +90,7 @@ public final class ModuleManager extends AbstractManager<Class<? extends Abstrac
     @SubscribeEvent
     private final Listener<KeyPressEvent> keyPressEventListener = event -> {
         for (AbstractModule module : this.map.values()) {
-            if (module.getKeyBind() == event.getKeyCode()) {
+            if (module.getKeyBindSetting().getValue() == event.getKeyCode()) {
                 module.toggle();
             }
         }

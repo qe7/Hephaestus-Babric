@@ -9,12 +9,8 @@ import io.github.qe7.core.ui.component.Component;
 import io.github.qe7.core.ui.component.FeatureComponent;
 import io.github.qe7.core.ui.component.ParentComponent;
 import io.github.qe7.core.ui.component.WindowComponent;
-import io.github.qe7.core.ui.component.special.EnumComponent;
-import io.github.qe7.core.ui.component.special.KeyBindComponent;
-import io.github.qe7.core.ui.component.special.ModeComponent;
 import io.github.qe7.core.ui.component.special.ToggleComponent;
 import io.github.qe7.toolbox.render.GuiUtil;
-import org.lwjgl.input.Keyboard;
 
 public final class DefaultTheme implements Theme, Global {
 
@@ -131,35 +127,22 @@ public final class DefaultTheme implements Theme, Global {
         drawString(component.getName(), component.getX() + getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), true, false);
     }
 
+//    public void renderModeComponent(ModeComponent component) {
+//        GuiUtil.drawRect(component.getX(), component.getY(), component.getX() + component.getWidth(), component.getY() + getDefaultHeaderHeight(), getClickGUIModule().getPrimaryColor().getRGB());
+//
+//        drawString(component.getName(), component.getX() + getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), true, false);
+//
+//        drawString(component.getSetting().getValue().getName(), component.getX() + component.getWidth() - getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), false, true);
+//    }
+
+
     @Override
-    public void renderKeyBindComponent(KeyBindComponent component, int keyCode, boolean listening) {
+    public void renderValueComponent(Component component, String value) {
         GuiUtil.drawRect(component.getX(), component.getY(), component.getX() + component.getWidth(), component.getY() + getDefaultHeaderHeight(), getClickGUIModule().getPrimaryColor().getRGB());
 
         drawString(component.getName(), component.getX() + getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), true, false);
 
-        if (listening) {
-            drawString("Listening...", component.getX() + component.getWidth() - getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), false, true);
-        } else {
-            drawString(keyCode == -1 ? "None" : Keyboard.getKeyName(keyCode), component.getX() + component.getWidth() - getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), false, true);
-        }
-    }
-
-    @Override
-    public void renderEnumComponent(EnumComponent<?> component) {
-        GuiUtil.drawRect(component.getX(), component.getY(), component.getX() + component.getWidth(), component.getY() + getDefaultHeaderHeight(), getClickGUIModule().getPrimaryColor().getRGB());
-
-        drawString(component.getName(), component.getX() + getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), true, false);
-
-        drawString(component.getSetting().getValue().getName(), component.getX() + component.getWidth() - getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), false, true);
-    }
-
-    @Override
-    public void renderModeComponent(ModeComponent component) {
-        GuiUtil.drawRect(component.getX(), component.getY(), component.getX() + component.getWidth(), component.getY() + getDefaultHeaderHeight(), getClickGUIModule().getPrimaryColor().getRGB());
-
-        drawString(component.getName(), component.getX() + getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), true, false);
-
-        drawString(component.getSetting().getValue().getName(), component.getX() + component.getWidth() - getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), false, true);
+        drawString(value, component.getX() + component.getWidth() - getDefaultTextOffset(), component.getY() + ((getDefaultHeaderHeight() / 2.0f) - (9 / 2.0f)), false, true);
     }
 
     @Override

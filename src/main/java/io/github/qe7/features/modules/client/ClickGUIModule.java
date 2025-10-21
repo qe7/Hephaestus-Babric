@@ -27,7 +27,7 @@ public final class ClickGUIModule extends AbstractModule {
     public ClickGUIModule() {
         super("Click GUI", "Displays a clickable interface to manage features", ModuleCategory.CLIENT);
 
-        this.setKeyBind(Keyboard.KEY_RSHIFT);
+        this.getKeyBindSetting().setValue(Keyboard.KEY_RSHIFT);
     }
 
     @Override

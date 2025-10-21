@@ -3,10 +3,10 @@ package io.github.qe7.core.feature.module;
 import io.github.qe7.core.bus.Handler;
 import io.github.qe7.core.common.*;
 import io.github.qe7.core.feature.module.settings.AbstractSetting;
+import io.github.qe7.core.feature.module.settings.impl.KeyBindSetting;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.core.ui.component.Component;
 import io.github.qe7.core.ui.component.FeatureComponent;
-import io.github.qe7.core.ui.component.special.KeyBindComponent;
 import io.github.qe7.core.ui.component.special.ToggleComponent;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,13 +23,14 @@ public abstract class AbstractModule implements Global, Nameable, Displayable, D
 
     private boolean hidden, drawn, enabled;
 
-    private int keyBind = Keyboard.KEY_NONE;
+    private KeyBindSetting keyBindSetting;
 
     public AbstractModule(final String name, final String description, final ModuleCategory category) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.drawn = true;
+        this.keyBindSetting = new KeyBindSetting("KeyBind", Keyboard.KEY_NONE);
     }
 
     @Override
@@ -79,8 +80,6 @@ public abstract class AbstractModule implements Global, Nameable, Displayable, D
     @Override
     public Component getComponent() {
         FeatureComponent component = new FeatureComponent(getName(), this::isEnabled, this::setEnabled);
-
-        component.children.add(new KeyBindComponent("KeyBind", () -> true, this::getKeyBind, this::setKeyBind));
 
         component.children.add(new ToggleComponent("Drawn", () -> true, this::isDrawn, this::setDrawn));
 

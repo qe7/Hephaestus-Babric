@@ -7,9 +7,6 @@ import io.github.qe7.core.ui.component.Component;
 import io.github.qe7.core.ui.component.FeatureComponent;
 import io.github.qe7.core.ui.component.ParentComponent;
 import io.github.qe7.core.ui.component.WindowComponent;
-import io.github.qe7.core.ui.component.special.EnumComponent;
-import io.github.qe7.core.ui.component.special.KeyBindComponent;
-import io.github.qe7.core.ui.component.special.ModeComponent;
 import io.github.qe7.core.ui.component.special.ToggleComponent;
 import io.github.qe7.toolbox.render.font.FontManager;
 import io.github.qe7.toolbox.render.font.FontType;
@@ -53,15 +50,11 @@ public interface Theme extends Global {
 
     void renderToggleComponent(ToggleComponent toggleComponent, boolean value);
 
-    void renderKeyBindComponent(KeyBindComponent keyBindComponent, int keyCode, boolean listening);
-
-    void renderEnumComponent(EnumComponent<?> enumComponent);
-
-    void renderModeComponent(ModeComponent modeComponent);
-
     void renderSliderComponent(Component component, String value, float fill);
 
     void renderTextComponent(Component component, String text);
+
+    void renderValueComponent(Component component, String value);
 
     ClickGUIModule getClickGUIModule();
 

@@ -5,8 +5,8 @@ import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.feature.module.mode.AbstractModuleMode;
 import io.github.qe7.core.feature.module.settings.AbstractSetting;
 import io.github.qe7.core.manager.ManagerFactory;
+import io.github.qe7.core.ui.component.AbstractComponent;
 import io.github.qe7.core.ui.component.Component;
-import io.github.qe7.core.ui.component.special.ModeComponent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,6 +72,38 @@ public final class ModeSetting extends AbstractSetting<AbstractModuleMode<?>> {
 
     @Override
     public Component getComponent() {
-        return new ModeComponent(this.getName(), this);
+        return new AbstractComponent(getSupplier(), getName()) {
+            @Override
+            public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+                setHeight(getTheme().getDefaultHeaderHeight());
+                getTheme().renderValueComponent(this, getValue().getName());
+            }
+
+            @Override
+            public void keyTyped(char typedChar, int keyCode) {
+
+            }
+
+            @Override
+            public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+                if (isMouseOver(mouseX, mouseY, getHeight())) {
+                    switch (mouseButton) {
+                        case 0: {
+                            cycleForward();
+                            break;
+                        }
+                        case 1: {
+                            cycleBackward();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void mouseReleased(int mouseX, int mouseY, int state) {
+
+            }
+        };
     }
 }

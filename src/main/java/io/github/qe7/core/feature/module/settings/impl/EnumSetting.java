@@ -3,8 +3,8 @@ package io.github.qe7.core.feature.module.settings.impl;
 import com.google.gson.JsonObject;
 import io.github.qe7.core.feature.module.settings.AbstractSetting;
 import io.github.qe7.core.feature.module.settings.impl.interfaces.IEnumSetting;
+import io.github.qe7.core.ui.component.AbstractComponent;
 import io.github.qe7.core.ui.component.Component;
-import io.github.qe7.core.ui.component.special.EnumComponent;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -83,6 +83,38 @@ public final class EnumSetting<T extends IEnumSetting> extends AbstractSetting<T
 
     @Override
     public Component getComponent() {
-        return new EnumComponent<>(this.getName(), this);
+        return new AbstractComponent(getSupplier(), getName()) {
+            @Override
+            public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+                setHeight(getTheme().getDefaultHeaderHeight());
+                getTheme().renderValueComponent(this, getValue().getName());
+            }
+
+            @Override
+            public void keyTyped(char typedChar, int keyCode) {
+
+            }
+
+            @Override
+            public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+                if (isMouseOver(mouseX, mouseY, getHeight())) {
+                    switch (mouseButton) {
+                        case 0: {
+                            cycleForward();
+                            break;
+                        }
+                        case 1: {
+                            cycleBackward();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void mouseReleased(int mouseX, int mouseY, int state) {
+
+            }
+        };
     }
 }
