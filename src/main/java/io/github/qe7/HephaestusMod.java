@@ -28,7 +28,7 @@ public class HephaestusMod implements ModInitializer {
         INSTANCE = this;
 
         this.name = "Hephaestus";
-        this.version = String.format("%s-%s", GitUtil.getBranch(), GitUtil.getCommitId());
+        this.version = String.format("%s-%s", "2.0.0", GitUtil.getCommitId());
         this.buildTime = GitUtil.getCommitTime();
 
         ManagerFactory.register(EventManager.class, new EventManager());
