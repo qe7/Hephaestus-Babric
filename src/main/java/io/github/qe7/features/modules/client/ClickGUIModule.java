@@ -4,7 +4,9 @@ import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
+import io.github.qe7.core.feature.settings.impl.BooleanSetting;
 import io.github.qe7.core.feature.settings.impl.ColorSetting;
+import io.github.qe7.core.feature.settings.impl.IntSetting;
 import io.github.qe7.events.UpdateEvent;
 import io.github.qe7.platform.ui.clickgui.ClickGUIScreen;
 import lombok.Getter;
@@ -14,6 +16,8 @@ import java.awt.*;
 
 @Getter
 public final class ClickGUIModule extends AbstractModule {
+
+    private final IntSetting width = new IntSetting("Width", 120, 80, 140, 1);
 
     private final ColorSetting primaryColor = new ColorSetting("Primary Color", new Color(132, 148, 255, 150));
     private final ColorSetting secondaryColor = new ColorSetting("Secondary Color", new Color(132, 148, 255, 30));
@@ -54,7 +58,7 @@ public final class ClickGUIModule extends AbstractModule {
     @SubscribeEvent
     private final Listener<UpdateEvent> updateEventListener = event -> {
         // check if the GUI is still open, if not disable the module
-        // ensures we don't reach a false enabled state. - qe7
+        // ensures we don't reach a false enabled state. - Shae
         if (!(mc.currentScreen instanceof ClickGUIScreen)) {
             this.setEnabled(false);
         }

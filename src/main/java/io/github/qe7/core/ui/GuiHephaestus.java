@@ -64,7 +64,7 @@ public abstract class GuiHephaestus extends GuiScreen implements Handler {
 
     public void alignComponents() {
         resetScroll();
-        int componentWidth = 130;
+        int componentWidth = getClickGUIModule().getWidth().getValue();
         int x = 4;
         int y = 4;
         for (Component component : components) {
@@ -85,6 +85,7 @@ public abstract class GuiHephaestus extends GuiScreen implements Handler {
         GuiUtil.OVERRIDE = true;
 
         for (Component component : components) {
+            component.setWidth(getClickGUIModule().getWidth().getValue());
             component.drawScreen(mouseX, mouseY, partialTicks);
 
             if (component.isMouseOver(mouseX, mouseY, component.getHeight())) {
