@@ -1,4 +1,4 @@
-package io.github.qe7.features.modules.render;
+package io.github.qe7.features.modules.client;
 
 import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
@@ -25,7 +25,7 @@ public final class ClickGUIModule extends AbstractModule {
     private ClickGuiScreen clickGuiScreen;
 
     public ClickGUIModule() {
-        super("Click GUI", "Displays a clickable interface to manage features", ModuleCategory.RENDER);
+        super("Click GUI", "Displays a clickable interface to manage features", ModuleCategory.CLIENT);
 
         this.setKeyBind(Keyboard.KEY_RSHIFT);
     }

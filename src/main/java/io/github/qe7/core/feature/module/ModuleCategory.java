@@ -12,7 +12,7 @@ public enum ModuleCategory {
     MISC("Misc", new Color(80, 200, 120).getRGB()),
     MOVEMENT("Movement", new Color(40, 120, 220).getRGB()),
     RENDER("Render", new Color(255, 180, 70).getRGB()),
-    EXPLOIT("Exploit", new Color(170, 60, 220).getRGB());
+    CLIENT("Client", new Color(170, 60, 220).getRGB());
 
     private final String name;
     private final int color;

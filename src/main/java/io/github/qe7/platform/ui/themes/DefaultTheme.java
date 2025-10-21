@@ -3,7 +3,7 @@ package io.github.qe7.platform.ui.themes;
 import io.github.qe7.core.common.Global;
 import io.github.qe7.core.feature.module.ModuleManager;
 import io.github.qe7.core.manager.ManagerFactory;
-import io.github.qe7.features.modules.render.ClickGUIModule;
+import io.github.qe7.features.modules.client.ClickGUIModule;
 import io.github.qe7.core.ui.Theme;
 import io.github.qe7.core.ui.component.Component;
 import io.github.qe7.core.ui.component.FeatureComponent;

@@ -2,7 +2,7 @@ package io.github.qe7.core.ui;
 
 import io.github.qe7.core.common.Global;
 import io.github.qe7.core.manager.ManagerFactory;
-import io.github.qe7.features.modules.render.ClickGUIModule;
+import io.github.qe7.features.modules.client.ClickGUIModule;
 import io.github.qe7.core.ui.component.Component;
 import io.github.qe7.core.ui.component.FeatureComponent;
 import io.github.qe7.core.ui.component.ParentComponent;
