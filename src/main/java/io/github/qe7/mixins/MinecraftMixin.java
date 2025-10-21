@@ -4,7 +4,9 @@ import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.events.TickEvent;
 import io.github.qe7.events.KeyPressEvent;
+import io.github.qe7.toolbox.mixin.IMinecraftMixin;
 import net.minecraft.client.Minecraft;
+import net.minecraft.src.Timer;
 import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -13,7 +15,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Minecraft.class)
-public final class MinecraftMixin {
+public final class MinecraftMixin implements IMinecraftMixin {
+
+    @Shadow
+    private Timer timer;
 
     @Shadow
     public boolean hideQuitButton;
@@ -33,5 +38,10 @@ public final class MinecraftMixin {
         int key = Keyboard.getEventKey() == 0 ? Keyboard.getEventCharacter() + 256 : Keyboard.getEventKey();
 
         if (Keyboard.getEventKeyState()) ManagerFactory.get(EventManager.class).publishEvent(new KeyPressEvent(key));
+    }
+
+    @Override
+    public Timer hephaestus_Babric$getTimer() {
+        return this.timer;
     }
 }

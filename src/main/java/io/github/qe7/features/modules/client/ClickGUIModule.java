@@ -4,6 +4,7 @@ import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
+import io.github.qe7.core.feature.module.settings.impl.ColorSetting;
 import io.github.qe7.events.UpdateEvent;
 import io.github.qe7.platform.ui.ClickGuiScreen;
 import lombok.Getter;
@@ -14,13 +15,13 @@ import java.awt.*;
 @Getter
 public final class ClickGUIModule extends AbstractModule {
 
-    private final Color primaryColor = new Color(132, 148, 255, 150);
-    private final Color secondaryColor = new Color(132, 148, 255, 30);
+    private final ColorSetting primaryColor = new ColorSetting("Primary Color", new Color(132, 148, 255, 150));
+    private final ColorSetting secondaryColor = new ColorSetting("Secondary Color", new Color(132, 148, 255, 30));
 
-    private final Color backgroundColor = new Color(0, 0, 0, 146);
+    private final ColorSetting backgroundColor = new ColorSetting("Background Color", new Color(0, 0, 0, 146));
 
-    private final Color primaryTextColor = new Color(255, 255, 255, 255);
-    private final Color secondaryTextColor = new Color(169, 169, 169, 255);
+    private final ColorSetting primaryTextColor = new ColorSetting("Primary Text Color", new Color(255, 255, 255, 255));
+    private final ColorSetting secondaryTextColor = new ColorSetting("Secondary Text Color", new Color(169, 169, 169, 255));
 
     private ClickGuiScreen clickGuiScreen;
 

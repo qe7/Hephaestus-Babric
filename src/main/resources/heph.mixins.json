@@ -4,6 +4,7 @@
   "package": "io.github.qe7.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "EntityMixin",
     "NetworkManagerMixin"
   ],
   "client": [

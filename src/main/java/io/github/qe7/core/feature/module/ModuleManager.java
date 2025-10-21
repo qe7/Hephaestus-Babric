@@ -11,6 +11,9 @@ import io.github.qe7.events.KeyPressEvent;
 import io.github.qe7.features.modules.combat.AntiKnockbackModule;
 import io.github.qe7.features.modules.combat.ForceFieldModule;
 import io.github.qe7.features.modules.client.ClickGUIModule;
+import io.github.qe7.features.modules.misc.NoFallDamageModule;
+import io.github.qe7.features.modules.movement.FlightModule;
+import io.github.qe7.features.modules.movement.speed.SpeedModule;
 import io.github.qe7.features.modules.render.HUDModule;
 
 import java.lang.reflect.Field;
@@ -27,6 +30,9 @@ public final class ModuleManager extends AbstractManager<Class<? extends Abstrac
         moduleList.add(new HUDModule());
         moduleList.add(new AntiKnockbackModule());
         moduleList.add(new ForceFieldModule());
+        moduleList.add(new SpeedModule());
+        moduleList.add(new FlightModule());
+        moduleList.add(new NoFallDamageModule());
 
         this.registerAbstractModule(moduleList);
 
