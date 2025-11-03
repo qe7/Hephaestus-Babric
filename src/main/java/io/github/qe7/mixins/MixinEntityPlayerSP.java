@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityPlayerSP.class)
-public final class EntityPlayerSPMixin {
+public final class MixinEntityPlayerSP {
 
     @Inject(method = "onLivingUpdate", at = @At("HEAD"))
     public void onLivingUpdate(CallbackInfo ci) {

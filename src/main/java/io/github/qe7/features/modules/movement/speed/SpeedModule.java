@@ -8,7 +8,7 @@ import io.github.qe7.core.feature.settings.impl.ModeSetting;
 import io.github.qe7.events.ScreenEvent;
 import io.github.qe7.features.modules.movement.speed.impl.ConstantSpeedMode;
 import io.github.qe7.features.modules.movement.speed.impl.PulseSpeedMode;
-import io.github.qe7.toolbox.mixin.IMinecraftMixin;
+import io.github.qe7.mixins.accessors.IAccessorMinecraft;
 
 public final class SpeedModule extends AbstractModule {
 
@@ -22,7 +22,7 @@ public final class SpeedModule extends AbstractModule {
     public void onDisable() {
         super.onDisable();
 
-        ((IMinecraftMixin) mc).hephaestus_Babric$getTimer().timerSpeed = 1.0F;
+        ((IAccessorMinecraft) mc).getTimer().timerSpeed = 1.0F;
     }
 
     @SubscribeEvent

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(GuiScreen.class)
-public abstract class GuiScreenMixin {
+public abstract class MixinGuiScreen {
 
     @Shadow
     protected Minecraft mc;

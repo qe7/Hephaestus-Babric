@@ -5,7 +5,7 @@ import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.mode.AbstractModuleMode;
 import io.github.qe7.events.UpdateEvent;
 import io.github.qe7.features.modules.movement.speed.SpeedModule;
-import io.github.qe7.toolbox.mixin.IMinecraftMixin;
+import io.github.qe7.mixins.accessors.IAccessorMinecraft;
 
 public final class PulseSpeedMode extends AbstractModuleMode<SpeedModule> {
 
@@ -29,11 +29,11 @@ public final class PulseSpeedMode extends AbstractModuleMode<SpeedModule> {
         }
 
         if (pulseTick <= 35) {
-            ((IMinecraftMixin) mc).hephaestus_Babric$getTimer().timerSpeed = 2.0F;
+            ((IAccessorMinecraft) mc).getTimer().timerSpeed = 2.0F;
         } else if (pulseTick == 176) {
             pulseTick = 0;
         } else {
-            ((IMinecraftMixin)mc).hephaestus_Babric$getTimer().timerSpeed = 1.0F;
+            ((IAccessorMinecraft) mc).getTimer().timerSpeed = 1.0F;
         }
 
         pulseTick++;

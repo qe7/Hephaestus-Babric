@@ -5,8 +5,8 @@ import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
 import io.github.qe7.events.UpdateEvent;
+import io.github.qe7.mixins.accessors.IAccessorEntity;
 import io.github.qe7.toolbox.PacketUtil;
-import io.github.qe7.toolbox.mixin.IEntityMixin;
 import net.minecraft.src.Packet10Flying;
 
 /**
@@ -26,8 +26,8 @@ public final class NoFallDamageModule extends AbstractModule {
             return;
         }
 
-        if (((IEntityMixin) mc.thePlayer).hephaestus_Babric$getFallDistance() > 2.5f) {
-            ((IEntityMixin) mc.thePlayer).hephaestus_Babric$setFallDistance(0.0f);
+        if (((IAccessorEntity) mc.thePlayer).getFallDistance() > 2.5f) {
+            ((IAccessorEntity) mc.thePlayer).setFallDistance(0.0f);
             PacketUtil.sendPacket(new Packet10Flying(true));
         }
     };

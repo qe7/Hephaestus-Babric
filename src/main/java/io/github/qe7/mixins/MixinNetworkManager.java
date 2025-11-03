@@ -19,7 +19,7 @@ import java.util.List;
 import static net.minecraft.src.NetworkManager.field_28145_d;
 
 @Mixin(NetworkManager.class)
-public abstract class NetworkManagerMixin {
+public abstract class MixinNetworkManager {
 
     @Shadow
     private List<Packet> readPackets;
