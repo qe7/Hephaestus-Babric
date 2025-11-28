@@ -2,7 +2,7 @@ package io.github.qe7.mixins;
 
 import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.manager.ManagerFactory;
-import io.github.qe7.events.UpdateEvent;
+import io.github.qe7.events.player.UpdateEvent;
 import net.minecraft.src.EntityPlayerSP;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

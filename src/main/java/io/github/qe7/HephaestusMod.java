@@ -5,6 +5,7 @@ import io.github.qe7.core.feature.command.CommandManager;
 import io.github.qe7.core.feature.hudelement.HUDElementManager;
 import io.github.qe7.core.feature.module.ModuleManager;
 import io.github.qe7.core.manager.ManagerFactory;
+import io.github.qe7.features.modules.client.HUDEditorModule;
 import io.github.qe7.toolbox.GitUtil;
 import io.github.qe7.toolbox.render.font.FontManager;
 import lombok.Getter;
@@ -43,4 +44,6 @@ public class HephaestusMod implements ModInitializer {
     public void onInitialize() {
         this.getLogger().info("{} {} ({})", this.getName(), this.getVersion(), this.getBuildTime());
     }
+
+
 }

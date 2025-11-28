@@ -7,7 +7,7 @@ import io.github.qe7.core.feature.module.ModuleCategory;
 import io.github.qe7.core.feature.settings.impl.BooleanSetting;
 import io.github.qe7.core.feature.settings.impl.FloatSetting;
 import io.github.qe7.core.feature.settings.impl.IntSetting;
-import io.github.qe7.events.UpdateEvent;
+import io.github.qe7.events.player.UpdateEvent;
 import io.github.qe7.toolbox.Stopwatch;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLiving;
@@ -43,7 +43,7 @@ public final class ForceFieldModule extends AbstractModule {
 
         List<EntityLiving> filteredEntities = (List<EntityLiving>) mc.theWorld.loadedEntityList.stream().filter(entity -> entity instanceof EntityLiving).collect(Collectors.toList());
 
-        filteredEntities.removeIf(entityLiving -> entityLiving.getDistanceToEntity(mc.thePlayer) > range.getValue() || entityLiving == mc.thePlayer || entityLiving.health <= 0);
+        filteredEntities.removeIf(entityLiving -> entityLiving.getDistanceSqToEntity(mc.thePlayer) > range.getValue() * range.getValue() || entityLiving == mc.thePlayer || entityLiving.health <= 0);
 
         filteredEntities.sort(Comparator.comparingDouble(entity -> entity.getDistanceSqToEntity(mc.thePlayer)));
 

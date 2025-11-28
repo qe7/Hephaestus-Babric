@@ -2,8 +2,8 @@ package io.github.qe7.mixins;
 
 import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.manager.ManagerFactory;
-import io.github.qe7.events.TickEvent;
-import io.github.qe7.events.KeyPressEvent;
+import io.github.qe7.events.game.TickEvent;
+import io.github.qe7.events.game.KeyPressEvent;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;

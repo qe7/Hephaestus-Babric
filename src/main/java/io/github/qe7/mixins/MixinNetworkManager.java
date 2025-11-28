@@ -2,7 +2,7 @@ package io.github.qe7.mixins;
 
 import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.manager.ManagerFactory;
-import io.github.qe7.events.PacketEvent;
+import io.github.qe7.events.player.PacketEvent;
 import net.minecraft.src.NetHandler;
 import net.minecraft.src.NetworkManager;
 import net.minecraft.src.Packet;

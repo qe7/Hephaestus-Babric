@@ -5,7 +5,7 @@ import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
 import io.github.qe7.core.feature.settings.impl.ModeSetting;
-import io.github.qe7.events.ScreenEvent;
+import io.github.qe7.events.render.RenderScreenEvent;
 import io.github.qe7.features.modules.movement.speed.impl.ConstantSpeedMode;
 import io.github.qe7.features.modules.movement.speed.impl.PulseSpeedMode;
 import io.github.qe7.mixins.accessors.IAccessorMinecraft;
@@ -26,7 +26,7 @@ public final class SpeedModule extends AbstractModule {
     }
 
     @SubscribeEvent
-    private final Listener<ScreenEvent> screenEventListener = event -> {
+    private final Listener<RenderScreenEvent> screenEventListener = event -> {
         this.setSuffix(this.mode.getValue().getName());
     };
 }

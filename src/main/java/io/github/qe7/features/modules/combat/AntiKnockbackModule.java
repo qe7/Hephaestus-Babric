@@ -4,7 +4,7 @@ import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
-import io.github.qe7.events.PacketEvent;
+import io.github.qe7.events.player.PacketEvent;
 import net.minecraft.src.Packet28EntityVelocity;
 
 public final class AntiKnockbackModule extends AbstractModule {

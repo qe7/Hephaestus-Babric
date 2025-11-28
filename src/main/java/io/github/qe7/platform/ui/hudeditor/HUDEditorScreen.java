@@ -5,13 +5,11 @@ import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.hudelement.AbstractHUDElement;
 import io.github.qe7.core.feature.hudelement.HUDElementManager;
-import io.github.qe7.core.feature.module.AbstractModule;
-import io.github.qe7.core.feature.module.ModuleManager;
 import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.core.ui.GuiHephaestus;
 import io.github.qe7.core.ui.component.Component;
 import io.github.qe7.core.ui.component.WindowComponent;
-import io.github.qe7.events.GuiMouseReleasedEvent;
+import io.github.qe7.events.game.GuiMouseReleasedEvent;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +22,7 @@ public class HUDEditorScreen extends GuiHephaestus {
 
     @Override
     public void loadGui() {
-        WindowComponent windowComponent = new WindowComponent("Test");
+        WindowComponent windowComponent = new WindowComponent("HUD Editor");
 
         windowComponent.setOpen(true);
 

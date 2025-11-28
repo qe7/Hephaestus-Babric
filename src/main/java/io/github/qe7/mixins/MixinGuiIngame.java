@@ -2,7 +2,7 @@ package io.github.qe7.mixins;
 
 import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.manager.ManagerFactory;
-import io.github.qe7.events.ScreenEvent;
+import io.github.qe7.events.render.RenderScreenEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.GuiIngame;
 import net.minecraft.src.ScaledResolution;
@@ -24,7 +24,7 @@ public final class MixinGuiIngame {
         GL11.glPushMatrix();
 
         final ScaledResolution scaledResolution = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
-        ManagerFactory.get(EventManager.class).publishEvent(new ScreenEvent(scaledResolution));
+        ManagerFactory.get(EventManager.class).publishEvent(new RenderScreenEvent(scaledResolution));
 
         GL11.glPopMatrix();
     }

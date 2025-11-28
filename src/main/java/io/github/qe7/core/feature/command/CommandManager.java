@@ -7,7 +7,7 @@ import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.common.Globals;
 import io.github.qe7.core.manager.AbstractManager;
 import io.github.qe7.core.manager.ManagerFactory;
-import io.github.qe7.events.PacketEvent;
+import io.github.qe7.events.player.PacketEvent;
 import io.github.qe7.features.commands.HelpCommand;
 import io.github.qe7.toolbox.ChatUtil;
 import net.minecraft.src.Packet3Chat;

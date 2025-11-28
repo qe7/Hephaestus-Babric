@@ -24,15 +24,15 @@ public final class GuiUtil {
             bottom = var6;
         }
 
-        float alpha = (float)(color >> 24 & 255) / 255.0F;
+        float alpha = (float) (color >> 24 & 255) / 255.0F;
 
         if (OVERRIDE) {
             alpha *= OVERRIDE_MULTIPLIER;
         }
 
-        float red = (float)(color >> 16 & 255) / 255.0F;
-        float green = (float)(color >> 8 & 255) / 255.0F;
-        float blue = (float)(color & 255) / 255.0F;
+        float red = (float) (color >> 16 & 255) / 255.0F;
+        float green = (float) (color >> 8 & 255) / 255.0F;
+        float blue = (float) (color & 255) / 255.0F;
         Tessellator var10 = Tessellator.instance;
         GL11.glEnable(3042);
         GL11.glDisable(3553);

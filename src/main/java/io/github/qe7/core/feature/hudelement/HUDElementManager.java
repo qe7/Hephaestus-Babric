@@ -5,7 +5,6 @@ import io.github.qe7.core.bus.Handler;
 import io.github.qe7.core.feature.settings.AbstractSetting;
 import io.github.qe7.core.manager.AbstractManager;
 import io.github.qe7.core.manager.ManagerFactory;
-import io.github.qe7.features.hudelements.TestHUDElement;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -16,8 +15,6 @@ public final class HUDElementManager extends AbstractManager<Class<? extends Abs
 
     public HUDElementManager() {
         List<AbstractHUDElement> elementList = new ArrayList<>();
-
-        elementList.add(new TestHUDElement());
 
         this.registerAbstractHUDElement(elementList);
 

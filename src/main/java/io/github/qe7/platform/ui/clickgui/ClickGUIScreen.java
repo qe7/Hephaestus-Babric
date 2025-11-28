@@ -10,7 +10,7 @@ import io.github.qe7.core.manager.ManagerFactory;
 import io.github.qe7.core.ui.GuiHephaestus;
 import io.github.qe7.core.ui.component.Component;
 import io.github.qe7.core.ui.component.WindowComponent;
-import io.github.qe7.events.GuiMouseReleasedEvent;
+import io.github.qe7.events.game.GuiMouseReleasedEvent;
 
 import java.util.List;
 import java.util.stream.Collectors;

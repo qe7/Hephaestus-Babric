@@ -4,7 +4,9 @@
   "package": "io.github.qe7.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinNetworkManager"
+    "MixinBlock",
+    "MixinNetworkManager",
+    "accessors.IAccessorEntity"
   ],
   "client": [
     "MixinEntityPlayerSP",

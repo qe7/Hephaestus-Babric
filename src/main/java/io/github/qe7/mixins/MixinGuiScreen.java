@@ -2,7 +2,7 @@ package io.github.qe7.mixins;
 
 import io.github.qe7.core.bus.EventManager;
 import io.github.qe7.core.manager.ManagerFactory;
-import io.github.qe7.events.GuiMouseReleasedEvent;
+import io.github.qe7.events.game.GuiMouseReleasedEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.GuiScreen;
 import org.lwjgl.input.Mouse;

@@ -4,7 +4,7 @@ import io.github.qe7.core.bus.Listener;
 import io.github.qe7.core.bus.SubscribeEvent;
 import io.github.qe7.core.feature.module.AbstractModule;
 import io.github.qe7.core.feature.module.ModuleCategory;
-import io.github.qe7.events.UpdateEvent;
+import io.github.qe7.events.player.UpdateEvent;
 import org.lwjgl.input.Keyboard;
 
 public final class FlightModule extends AbstractModule {
